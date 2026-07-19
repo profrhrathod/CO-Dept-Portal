@@ -379,6 +379,15 @@
         </div>
       </div>
 
+      <div class="card">
+        <h2>Scrolling Ticker Text (Vision / Mission strip)</h2>
+        <p style="font-size:.85rem;color:var(--muted)">Shown as a scrolling strip above the top menu, visible to everyone even before login. Enter one line per box — each line scrolls fully across, then pauses 10 seconds before the next line starts, looping continuously. Leave a box empty to show fewer lines.</p>
+        <div id="tickerLinesEditor"></div>
+        <button class="btn small" type="button" onclick="addTickerLineBox()">+ Add another line</button>
+        <button class="btn gold" onclick="doSaveTicker()">Save Ticker Text</button>
+        <div id="tkMsg" class="msg"></div>
+      </div>
+
       <div class="admin-grid">
         <div class="card">
           <h2>Home-Page Top Menu Buttons</h2>
@@ -589,7 +598,7 @@ function showTab(tab){
   if(isCustom) renderCustomTab(tab.substring(3));
   if(tab==='notices') renderNotices();
   if(tab==='myregs') renderMyRegs();
-  if(tab==='admin' && isAdmin()){ renderAdminTables(); renderTypeList(); renderMenuTabAdmin(); loadAdminRegs(); loadPendingUsers(); loadAdminResources(); }
+  if(tab==='admin' && isAdmin()){ renderAdminTables(); renderTypeList(); renderMenuTabAdmin(); loadAdminRegs(); loadPendingUsers(); loadAdminResources(); loadTickerEditor(); }
 }
 
 function renderSubTabs(){
@@ -707,6 +716,41 @@ function renderTopMenuAdmin(){
   }).join('');
   if(cur) sel.value = cur;
 }
+/* ---------------- admin: scrolling ticker text ---------------- */
+function loadTickerEditor(){
+  call('getTickerText', [], function(r){
+    var lines = (r && r.ok && r.lines && r.lines.length) ? r.lines : TICKER_LINES;
+    renderTickerEditor(lines);
+  });
+}
+function renderTickerEditor(lines){
+  var box = $('tickerLinesEditor');
+  box.innerHTML = '';
+  (lines.length ? lines : ['']).forEach(function(line){ addTickerLineBox(line); });
+}
+function addTickerLineBox(value){
+  var box = $('tickerLinesEditor');
+  var row = document.createElement('div');
+  row.style.display = 'flex'; row.style.gap = '8px'; row.style.alignItems = 'center'; row.style.marginTop = '8px';
+  var input = document.createElement('textarea');
+  input.rows = 2; input.style.flex = '1'; input.className = 'tickerLine';
+  input.value = (typeof value === 'string') ? value : '';
+  var del = document.createElement('button');
+  del.type = 'button'; del.className = 'btn small danger'; del.textContent = '✕';
+  del.onclick = function(){ row.remove(); };
+  row.appendChild(input); row.appendChild(del);
+  box.appendChild(row);
+}
+function doSaveTicker(){
+  var inputs = document.querySelectorAll('#tickerLinesEditor .tickerLine');
+  var lines = Array.prototype.map.call(inputs, function(el){ return el.value.trim(); }).filter(function(v){ return v; });
+  if(!lines.length){ setMsg('tkMsg', false, 'Please enter at least one line of text.'); return; }
+  call('adminSetTicker', [TOKEN, lines], function(r){
+    setMsg('tkMsg', r.ok, r.msg);
+    if(r.ok){ TICKER_LINES = lines; }
+  }, 'tkMsg');
+}
+
 function doAddTopMenu(){
   call('adminAddTopMenu', [TOKEN, $('tmName').value.trim()], function(r){
     setMsg('tmMsg', r.ok, r.msg);
@@ -1054,13 +1098,18 @@ if('serviceWorker' in navigator){
     navigator.serviceWorker.register('sw.js').catch(()=>{ /* fine if this fails, e.g. opened via file:// */ });
   });
 }/* ================= Vision / Mission ticker ================= */
-const TICKER_LINES = [
+let TICKER_LINES = [
   'Vision- To educate students, to be computer technology expert & technocrat, with brainstorming & learning hardware, software, co-curricular and extracurricular concepts.',
   'Mission- To enhance and pacify knowledge thirst in order to strengthen IT and Computer skills in building blocks of nation.'
 ];
 const TICKER_SPEED_PX_PER_SEC = 90; // scroll speed
-const TICKER_GAP_MS = 10000;        // 10 second gap before next line starts
 let tickerIndex = 0;
+function loadTicker(){
+  apiCall('getTickerText', []).then(function(r){
+    if(r && r.ok && r.lines && r.lines.length) TICKER_LINES = r.lines;
+    runTicker();
+  }).catch(function(){ runTicker(); });
+}
 function runTicker(){
   const el = document.getElementById('tickerText');
   const wrap = el.parentElement;
@@ -1077,10 +1126,10 @@ function runTicker(){
   el.addEventListener('animationend', function onEnd(){
     el.removeEventListener('animationend', onEnd);
     tickerIndex++;
-    setTimeout(runTicker, TICKER_GAP_MS);
+    runTicker();
   });
 }
-runTicker();
+loadTicker();
 </script>
 </body>
 </html>
