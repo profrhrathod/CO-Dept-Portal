@@ -490,7 +490,7 @@ function busy(on){ $('loading').style.display = on ? 'flex' : 'none'; }
 function setMsg(id, ok, text){ var m=$(id); if(!m)return; m.className='msg '+(ok?'ok':'err'); m.textContent=text; }
 
 /* ================= API adapter (Google Apps Script Web App) ================= */
-const API_URL = 'https://script.google.com/macros/s/AKfycbwNhefArghyJyu82MzJTIgx9kpWeu6t771EQahINVcGTku7DY7gMz_6fjAdPulhlCqc/exec';
+const API_URL = 'https://script.google.com/macros/s/AKfycbzeBNF_G6m5x99hBKcmQUTETtgDP7urtlxXrtE54OwdcUAhwR_ASwx9BQF6eIQveFLE/exec';
 async function apiCall(fn, args){
   const res = await fetch(API_URL, { method:'POST', body: JSON.stringify({ action: fn, args: args || [] }) });
   return await res.json();
