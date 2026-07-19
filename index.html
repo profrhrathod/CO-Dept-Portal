@@ -460,7 +460,7 @@
 </div>
 
 <script>
-var APP_VERSION = '2.4';
+var APP_VERSION = '2.5';
 var TOKEN = localStorage.getItem('dep_token') || '';
 var DATA = { types: [], events: [], notices: [], myRegs: [], menuTabs: [], tabItems: [], user: null };
 var CURRENT_CAT = '';
@@ -473,7 +473,7 @@ function busy(on){ $('loading').style.display = on ? 'flex' : 'none'; }
 function setMsg(id, ok, text){ var m=$(id); if(!m)return; m.className='msg '+(ok?'ok':'err'); m.textContent=text; }
 
 /* ================= API adapter (Google Apps Script Web App) ================= */
-const API_URL = 'https://script.google.com/macros/s/AKfycbxMM6jErpurILzCtWcjJ2VRfBoAyxzqAEJKJydH0NB7BEiI_D0XL2Id3csMBr6lyK6U/exec';
+const API_URL = 'https://script.google.com/macros/s/AKfycbwNhefArghyJyu82MzJTIgx9kpWeu6t771EQahINVcGTku7DY7gMz_6fjAdPulhlCqc/exec';
 async function apiCall(fn, args){
   const res = await fetch(API_URL, { method:'POST', body: JSON.stringify({ action: fn, args: args || [] }) });
   return await res.json();
