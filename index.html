@@ -325,6 +325,14 @@
     <!-- ---------- ADMIN PANEL ---------- -->
     <div id="panel-admin" class="hidden">
       <div class="card">
+        <h2>Currently Logged-In Users</h2>
+        <p style="font-size:.85rem;color:var(--muted)">A login stays "active" for up to 12 hours after sign-in, or until the person logs out — whichever comes first. This reflects live login sessions, not lifetime visit history.</p>
+        <div id="sessionSummary" style="display:flex;gap:16px;flex-wrap:wrap;margin:10px 0"></div>
+        <div class="table-scroll"><table id="admSessionTable"></table></div>
+        <button class="btn small" onclick="loadActiveSessions()">Refresh</button>
+      </div>
+
+      <div class="card">
         <h2>Pending Registrations — Approval Required</h2>
         <div class="table-scroll"><table id="admPendingTable"></table></div>
       </div>
@@ -464,12 +472,12 @@
 </div>
 
 <div class="footer">
-  Computer Engg. Department Portal (v2.6) · Dr. Punjabrao Deshmukh Polytechnic, Amravati ·
+  Computer Engg. Department Portal (v2.7) · Dr. Punjabrao Deshmukh Polytechnic, Amravati ·
   All records are maintained in the institutional Google Sheet.
 </div>
 
 <script>
-var APP_VERSION = '2.6';
+var APP_VERSION = '2.7';
 var TOKEN = localStorage.getItem('dep_token') || '';
 var DATA = { types: [], events: [], notices: [], myRegs: [], menuTabs: [], tabItems: [], user: null };
 var CURRENT_CAT = '';
@@ -607,7 +615,7 @@ function showTab(tab){
   if(isCustom) renderCustomTab(tab.substring(3));
   if(tab==='notices') renderNotices();
   if(tab==='myregs') renderMyRegs();
-  if(tab==='admin' && isAdmin()){ renderAdminTables(); renderTypeList(); renderMenuTabAdmin(); loadAdminRegs(); loadPendingUsers(); loadAdminResources(); loadTickerEditor(); }
+  if(tab==='admin' && isAdmin()){ renderAdminTables(); renderTypeList(); renderMenuTabAdmin(); loadAdminRegs(); loadPendingUsers(); loadAdminResources(); loadTickerEditor(); loadActiveSessions(); }
 }
 
 function renderSubTabs(){
@@ -779,6 +787,29 @@ function doDelTopMenu(id, name){
     setMsg('tmMsg', r.ok, r.msg);
     if(r.ok){ RES_CACHE=null; loadPublicResources(function(){ renderTopMenuAdmin(); loadAdminResources(); }); }
   }, 'tmMsg');
+}
+
+/* ---------------- admin: currently logged-in users ---------------- */
+function loadActiveSessions(){
+  call('adminGetActiveSessions', [TOKEN], function(r){
+    var sum = $('sessionSummary'), t = $('admSessionTable');
+    if(!r.ok){ sum.innerHTML=''; t.innerHTML='<tr><td>'+esc(r.msg)+'</td></tr>'; return; }
+    function card(label, count, range){
+      var rangeText = range ? ('Range: '+esc(range.earliest)+' — '+esc(range.latest)) : 'No one currently logged in';
+      return '<div style="border:1px solid var(--rule);border-radius:4px;padding:10px 14px;min-width:200px">'
+        +'<div style="font-size:1.4rem;font-weight:700;color:var(--ink)">'+count+'</div>'
+        +'<div style="font-weight:600">'+esc(label)+'</div>'
+        +'<div style="font-size:.8rem;color:var(--muted)">'+rangeText+'</div></div>';
+    }
+    sum.innerHTML = card('Students logged in', r.studentCount, r.studentRange)
+      + card('Teachers logged in', r.teacherCount, r.teacherRange)
+      + card('Admins logged in', r.adminCount, r.adminRange);
+    if(!r.sessions || !r.sessions.length){ t.innerHTML='<tr><td class="empty">No active login sessions right now.</td></tr>'; return; }
+    t.innerHTML='<tr><th>Name</th><th>Role</th><th>E-mail</th><th>Logged in at</th></tr>'
+      + r.sessions.map(function(s){
+          return '<tr><td>'+esc(s.name)+'</td><td>'+esc(s.role)+'</td><td>'+esc(s.email)+'</td><td>'+esc(s.loginTime)+'</td></tr>';
+        }).join('');
+  });
 }
 
 /* ---------------- admin: approvals ---------------- */
