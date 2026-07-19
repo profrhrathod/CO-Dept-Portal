@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Computer Engg. Department Events Portal</title>
+<title>Computer Engg. Department Portal</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#1E3A5F">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png">
@@ -103,6 +103,7 @@
 
   /* ---------- Events / tables ---------- */
   .event{border:1px solid var(--rule);border-left:4px solid var(--marigold);border-radius:3px;padding:14px 16px;margin-bottom:12px;background:#FFFDF8}
+  .tab-details{white-space:pre-wrap}
   .event h3{font-size:1.05rem;margin-bottom:4px}
   .event .meta{font-size:.85rem;color:var(--muted);margin-bottom:6px}
   .event .meta span{margin-right:16px;white-space:nowrap}
@@ -142,7 +143,7 @@
     <div>
       <div class="society">Shree Shivaji Education Society, Amravati</div>
       <h1>Dr. Punjabrao Deshmukh Polytechnic, Amravati</h1>
-      <div class="portal-name">Computer Engg. Department Events Portal</div>
+      <div class="portal-name">Computer Engg. Department Portal</div>
     </div>
     <img class="lh-logo" alt="Shree Shivaji Education Society emblem" src="data:image/jpeg;base64,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">
   </div>
@@ -369,12 +370,20 @@
         <div class="card">
           <h2>Upload Menu Tab Content</h2>
           <label>Menu tab *</label>
-          <select id="tiTab"></select>
+          <select id="tiTab" onchange="onTiTabChange()"></select>
           <label>Title *</label><input id="tiTitle">
           <label>Details</label><textarea id="tiDetails" rows="3"></textarea>
-          <label>Attachment link (Google Drive URL)</label><input id="tiLink" placeholder="https://…">
-          <button class="btn gold" onclick="doAddTabItem()">Publish</button>
+          <label>Attachment link(s) (Google Drive URL) — add as many as needed under this one heading</label>
+          <div id="tiLinksBox"></div>
+          <button class="btn small" type="button" onclick="addTiLinkBox()">+ Add another link</button>
+          <div class="toolbar">
+            <button class="btn gold" id="tiPublishBtn" onclick="doAddTabItem()">Publish</button>
+            <button class="btn gold hidden" id="tiUpdateBtn" onclick="doUpdateTabItem()">Update</button>
+            <button class="btn hidden" id="tiCancelBtn" onclick="cancelTiEdit()">Cancel edit</button>
+          </div>
+          <div id="tiEditBanner" style="display:none;margin-top:12px;padding:10px 12px;border-radius:3px;font-size:.9rem;background:#EAF3EA;color:#1E5C2C"></div>
           <div id="tiMsg" class="msg"></div>
+          <p style="font-weight:600;margin-top:14px" id="tiShowingLabel">Showing content published on: —</p>
           <div class="table-scroll"><table id="admTabItemTable"></table></div>
         </div>
       </div>
@@ -455,12 +464,12 @@
 </div>
 
 <div class="footer">
-  Computer Engg. Department Events Portal (v2.4) · Dr. Punjabrao Deshmukh Polytechnic, Amravati ·
+  Computer Engg. Department Portal (v2.6) · Dr. Punjabrao Deshmukh Polytechnic, Amravati ·
   All records are maintained in the institutional Google Sheet.
 </div>
 
 <script>
-var APP_VERSION = '2.5';
+var APP_VERSION = '2.6';
 var TOKEN = localStorage.getItem('dep_token') || '';
 var DATA = { types: [], events: [], notices: [], myRegs: [], menuTabs: [], tabItems: [], user: null };
 var CURRENT_CAT = '';
@@ -613,12 +622,19 @@ function pickCat(t){ CURRENT_CAT = t; renderSubTabs(); renderEvents(); }
 function renderCustomTab(tabId){
   var tab = DATA.menuTabs.filter(function(t){ return t.id===tabId; })[0];
   $('customTitle').textContent = tab ? tab.name : '';
-  var rows = DATA.tabItems.filter(function(x){ return x.tabId===tabId; });
+  var rows = DATA.tabItems.filter(function(x){ return x.tabId===tabId; })
+    .slice().sort(function(a,b){ return a.order-b.order; });
   if(!rows.length){ $('customList').innerHTML='<div class="empty">No content has been published on this tab yet.</div>'; return; }
   $('customList').innerHTML = rows.map(function(x){
-    return '<div class="event"><h3>'+esc(x.title)+'</h3><div class="meta"><span>Published: '+esc(x.posted)+'</span></div>'
-      +(x.details?'<p>'+esc(x.details)+'</p>':'')
-      +(x.link?'<p><a href="'+esc(x.link)+'" target="_blank" rel="noopener">Open attachment</a></p>':'')+'</div>';
+    var linksHtml = (x.links && x.links.length)
+      ? '<p class="ti-links">' + x.links.map(function(l){
+          return '<a href="'+esc(l.url)+'" target="_blank" rel="noopener">'+esc(l.title)+'</a>';
+        }).join(' &nbsp;|&nbsp; ') + '</p>'
+      : '';
+    var hiddenTag = (x.hidden && isAdmin()) ? ' <span style="color:#B33;font-size:.8em">(hidden from students/teachers)</span>' : '';
+    return '<div class="event"><h3>'+esc(x.title)+hiddenTag+'</h3><div class="meta"><span>Published: '+esc(x.posted)+'</span></div>'
+      +(x.details?'<p class="tab-details">'+esc(x.details)+'</p>':'')
+      +linksHtml+'</div>';
   }).join('');
 }
 
@@ -903,6 +919,7 @@ function loadAdminResources(){
 
 
 /* ---------------- admin: custom menu tabs ---------------- */
+let TI_EDIT_ID = null;
 function renderMenuTabAdmin(){
   $('menuTabList').innerHTML = DATA.menuTabs.map(function(t){
     var mark = '';
@@ -910,19 +927,88 @@ function renderMenuTabAdmin(){
     if(t.link) mark += ' [direct link]';
     return '<span class="typechip">'+esc(t.name)+mark+'<button onclick="doDelMenuTab(\''+esc(t.id)+'\',\''+esc(t.name)+'\')">✕</button></span>';
   }).join('') || '<span class="empty">No custom menu tabs yet.</span>';
+  var keepTab = $('tiTab').value;
   $('tiTab').innerHTML = DATA.menuTabs.filter(function(t){ return !t.link; }).map(function(t){
     return '<option value="'+esc(t.id)+'">'+esc(t.name)+'</option>';
   }).join('');
+  if(keepTab) $('tiTab').value = keepTab;
+  if(!$('tiLinksBox').children.length) addTiLinkBox();
+  onTiTabChange();
+}
+function onTiTabChange(){
+  var tabId = $('tiTab').value;
+  var tab = DATA.menuTabs.filter(function(t){ return t.id===tabId; })[0];
+  $('tiShowingLabel').textContent = 'Showing content published on: ' + (tab ? tab.name : '—');
   renderTabItemTable();
 }
+function addTiLinkBox(title, url){
+  var box = $('tiLinksBox');
+  var row = document.createElement('div');
+  row.className = 'ti-link-row';
+  row.style.display = 'flex'; row.style.gap='8px'; row.style.marginTop='8px';
+  var t = document.createElement('input'); t.placeholder='Link title (e.g. Syllabus)'; t.className='tiLinkTitle';
+  t.value = title || ''; t.style.flex='1';
+  var u = document.createElement('input'); u.placeholder='https://drive.google.com/…'; u.className='tiLinkUrl';
+  u.value = url || ''; u.style.flex='2';
+  var del = document.createElement('button'); del.type='button'; del.className='btn small danger';
+  del.textContent='✕'; del.onclick=function(){ row.remove(); };
+  row.appendChild(t); row.appendChild(u); row.appendChild(del);
+  box.appendChild(row);
+}
+function collectTiLinks(){
+  var rows = document.querySelectorAll('#tiLinksBox .ti-link-row');
+  var out = [];
+  rows.forEach(function(r){
+    var url = r.querySelector('.tiLinkUrl').value.trim();
+    var title = r.querySelector('.tiLinkTitle').value.trim();
+    if(url) out.push({ title: title || 'Attachment', url: url });
+  });
+  return out;
+}
+function resetTiForm(){
+  TI_EDIT_ID = null;
+  $('tiTitle').value=''; $('tiDetails').value='';
+  $('tiLinksBox').innerHTML=''; addTiLinkBox();
+  $('tiPublishBtn').classList.remove('hidden');
+  $('tiUpdateBtn').classList.add('hidden');
+  $('tiCancelBtn').classList.add('hidden');
+  $('tiEditBanner').style.display='none';
+}
+function doEditTabItem(id){
+  var item = DATA.tabItems.filter(function(x){ return x.id===id; })[0];
+  if(!item) return;
+  TI_EDIT_ID = id;
+  $('tiTab').value = item.tabId;
+  onTiTabChange();
+  $('tiTitle').value = item.title;
+  $('tiDetails').value = item.details || '';
+  $('tiLinksBox').innerHTML = '';
+  (item.links && item.links.length ? item.links : [{title:'',url:''}]).forEach(function(l){ addTiLinkBox(l.title, l.url); });
+  $('tiPublishBtn').classList.add('hidden');
+  $('tiUpdateBtn').classList.remove('hidden');
+  $('tiCancelBtn').classList.remove('hidden');
+  $('tiEditBanner').textContent = 'Editing: ' + item.title;
+  $('tiEditBanner').style.display='block';
+  $('tiTitle').scrollIntoView({behavior:'smooth', block:'center'});
+}
+function cancelTiEdit(){ resetTiForm(); }
 function renderTabItemTable(){
   var t=$('admTabItemTable');
-  if(!DATA.tabItems.length){ t.innerHTML='<tr><td class="empty">No tab content published.</td></tr>'; return; }
-  var names={}; DATA.menuTabs.forEach(function(x){ names[x.id]=x.name; });
-  t.innerHTML='<tr><th>Menu tab</th><th>Title</th><th>Published</th><th>Action</th></tr>'
-    + DATA.tabItems.map(function(x){
-        return '<tr><td>'+esc(names[x.tabId]||'—')+'</td><td>'+esc(x.title)+'</td><td>'+esc(x.posted)+'</td>'
-          +'<td><button class="btn small danger" onclick="doDelTabItem(\''+esc(x.id)+'\')">Remove</button></td></tr>';
+  var tabId = $('tiTab').value;
+  var rows = DATA.tabItems.filter(function(x){ return x.tabId===tabId; })
+    .slice().sort(function(a,b){ return a.order-b.order; });
+  if(!rows.length){ t.innerHTML='<tr><td class="empty">No content published on this tab yet.</td></tr>'; return; }
+  t.innerHTML='<tr><th>Title</th><th>Attachments</th><th>Published</th><th>Visible</th><th>Move</th><th>Action</th></tr>'
+    + rows.map(function(x, i){
+        var linkCount = (x.links && x.links.length) || 0;
+        return '<tr><td>'+esc(x.title)+'</td><td>'+linkCount+'</td><td>'+esc(x.posted)+'</td>'
+          +'<td><button class="btn small'+(x.hidden?' danger':'')+'" onclick="doToggleTabItemHidden(\''+esc(x.id)+'\','+(x.hidden?'false':'true')+')">'+(x.hidden?'Hidden — Show':'Visible — Hide')+'</button></td>'
+          +'<td><div style="display:flex;flex-direction:column;gap:4px">'
+            +'<button class="btn small" '+(i===0?'disabled':'')+' onclick="doMoveTabItem(\''+esc(x.id)+'\',\'up\')">▲</button>'
+            +'<button class="btn small" '+(i===rows.length-1?'disabled':'')+' onclick="doMoveTabItem(\''+esc(x.id)+'\',\'down\')">▼</button>'
+          +'</div></td>'
+          +'<td><button class="btn small" onclick="doEditTabItem(\''+esc(x.id)+'\')">Edit</button> '
+          +'<button class="btn small danger" onclick="doDelTabItem(\''+esc(x.id)+'\')">Remove</button></td></tr>';
       }).join('');
 }
 function doAddMenuTab(){
@@ -941,20 +1027,43 @@ function doDelMenuTab(id, name){
   }, 'mtMsg');
 }
 function doAddTabItem(){
-  call('adminAddTabItem', [TOKEN, { tabId:$('tiTab').value, title:$('tiTitle').value.trim(),
-      details:$('tiDetails').value.trim(), link:$('tiLink').value.trim() }],
-    function(r){
+  var f = { tabId:$('tiTab').value, title:$('tiTitle').value.trim(),
+      details:$('tiDetails').value.trim(), links: collectTiLinks() };
+  if(!f.tabId || !f.title){ setMsg('tiMsg', false, 'Menu tab and title are required.'); return; }
+  call('adminAddTabItem', [TOKEN, f], function(r){
       setMsg('tiMsg', r.ok, r.msg);
-      if(r.ok){ ['tiTitle','tiDetails','tiLink'].forEach(function(i){$(i).value='';});
-        refreshData(function(){ renderMenuTabAdmin(); }); }
+      if(r.ok){ resetTiForm(); refreshData(function(){ renderMenuTabAdmin(); }); }
     }, 'tiMsg');
+}
+function doUpdateTabItem(){
+  if(!TI_EDIT_ID) return;
+  var f = { tabId:$('tiTab').value, title:$('tiTitle').value.trim(),
+      details:$('tiDetails').value.trim(), links: collectTiLinks() };
+  if(!f.tabId || !f.title){ setMsg('tiMsg', false, 'Menu tab and title are required.'); return; }
+  call('adminUpdateTabItem', [TOKEN, TI_EDIT_ID, f], function(r){
+      setMsg('tiMsg', r.ok, r.msg);
+      if(r.ok){ resetTiForm(); refreshData(function(){ renderMenuTabAdmin(); }); }
+    }, 'tiMsg');
+}
+function doMoveTabItem(id, direction){
+  call('adminMoveTabItem', [TOKEN, id, direction], function(r){
+    if(r.ok) refreshData(function(){ renderMenuTabAdmin(); });
+    else setMsg('tiMsg', false, r.msg);
+  });
+}
+function doToggleTabItemHidden(id, hidden){
+  call('adminSetTabItemHidden', [TOKEN, id, hidden], function(r){
+    setMsg('tiMsg', r.ok, r.msg);
+    if(r.ok) refreshData(function(){ renderMenuTabAdmin(); });
+  }, 'tiMsg');
 }
 function doDelTabItem(id){
   if(!confirm('Remove this content from the menu tab?')) return;
   call('adminDeleteTabItem', [TOKEN, id], function(r){
-    alert(r.msg);
+    setMsg('tiMsg', r.ok, r.msg);
+    if(id===TI_EDIT_ID) resetTiForm();
     if(r.ok) refreshData(function(){ renderMenuTabAdmin(); });
-  });
+  }, 'tiMsg');
 }
 
 
@@ -987,7 +1096,7 @@ function downloadRegExcel(){
   var s = '<html xmlns:x="urn:schemas-microsoft-com:office:excel"><head><meta charset="UTF-8"></head><body>';
   s += '<table border="1">';
   s += '<tr><td colspan="7" style="font-weight:bold;font-size:14pt;text-align:center">Dr. Punjabrao Deshmukh Polytechnic, Amravati</td></tr>';
-  s += '<tr><td colspan="7" style="text-align:center">Computer Engg. Department Events Portal</td></tr>';
+  s += '<tr><td colspan="7" style="text-align:center">Computer Engg. Department Portal</td></tr>';
   s += '<tr><td colspan="7" style="font-weight:bold;text-align:center">Participant List — '+esc(evName)+' ('+esc(evCat)+')</td></tr>';
   s += '<tr><th>Sr.</th><th>Name of Participant</th><th>Role</th><th>Department</th><th>Mobile</th><th>E-mail</th><th>Signature</th></tr>';
   ADM_REGS.forEach(function(x,i){
@@ -1104,18 +1213,19 @@ let TICKER_LINES = [
 ];
 const TICKER_SPEED_PX_PER_SEC = 90; // scroll speed
 let tickerIndex = 0;
+let tickerTimer = null;
 function loadTicker(){
+  runTicker(); // start immediately with the built-in default text — don't wait on the network
   apiCall('getTickerText', []).then(function(r){
     if(r && r.ok && r.lines && r.lines.length) TICKER_LINES = r.lines;
-    runTicker();
-  }).catch(function(){ runTicker(); });
+  }).catch(function(){});
 }
 function runTicker(){
+  if(tickerTimer){ clearTimeout(tickerTimer); tickerTimer = null; }
   const el = document.getElementById('tickerText');
   const wrap = el.parentElement;
   const text = TICKER_LINES[tickerIndex % TICKER_LINES.length];
   el.textContent = text;
-  el.classList.remove('scrolling');
   el.style.animation = 'none';
   el.style.transform = 'translateX(100%)';
   // force reflow so the animation restarts cleanly
@@ -1123,11 +1233,12 @@ function runTicker(){
   const distance = wrap.offsetWidth + el.offsetWidth;
   const duration = Math.max(6, distance / TICKER_SPEED_PX_PER_SEC);
   el.style.animation = 'ticker-scroll ' + duration + 's linear forwards';
-  el.addEventListener('animationend', function onEnd(){
-    el.removeEventListener('animationend', onEnd);
+  // Timer-based advance instead of animationend — more reliable across browsers
+  // (animationend can be skipped/throttled, e.g. when the tab is backgrounded).
+  tickerTimer = setTimeout(function(){
     tickerIndex++;
     runTicker();
-  });
+  }, duration * 1000 + 50);
 }
 loadTicker();
 </script>
